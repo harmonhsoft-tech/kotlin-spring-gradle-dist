@@ -1,0 +1,15 @@
+configurations {
+    cucumber.extendsFrom testImplementation
+}
+
+task cucumber(type: JavaExec, dependsOn: ['assemble', 'testClasses']) {
+    classpath = configurations.cucumber.plus(sourceSets.main.output).plus(sourceSets.test.output)
+    args = [
+            "--plugin", "pretty",
+            "--plugin", "html:build/report/cucumber-report.html",
+            "--glue", "tech.harmonysoft.oss.cucumber.glue",
+            "classpath:features"
+    ]
+    jvmArgs = [ "-Xmx2g", "-XX:+HeapDumpOnOutOfMemoryError", "-XX:OnOutOfMemoryError=kill -9 %p" ]
+    main = "io.cucumber.core.cli.Main"
+}

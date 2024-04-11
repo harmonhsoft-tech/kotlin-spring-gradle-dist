@@ -1,0 +1,75 @@
+java {
+    withSourcesJar()
+}
+
+jar {
+    archiveClassifier = ""
+}
+
+tasks.dokkaJavadoc.configure {
+    outputDirectory.set(project.layout.buildDirectory.dir("dokkaJavadoc"))
+    dokkaSourceSets {
+        configureEach {
+            noStdlibLink.set(false)
+            noJdkLink.set(false)
+        }
+    }
+}
+
+task docJar(type: Jar) {
+    dependsOn dokkaJavadoc
+    archiveClassifier = "javadoc"
+    from(project.layout.buildDirectory.dir("dokkaJavadoc"))
+}
+
+artifacts {
+    archives(docJar)
+}
+
+def projectDescription = project.ext.getMandatoryProperty("projectDescription")
+def projectUrl = project.ext.getMandatoryProperty("projectUrl")
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            artifactId = project.name
+            from components.java
+            artifact(docJar)
+
+            pom {
+                name = project.name
+                description = projectDescription
+                url = projectUrl
+
+                licenses {
+                    license {
+                        name = "The MIT License (MIT)"
+                        url = "http://opensource.org/licenses/MIT"
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = "denis"
+                        name = "Denis Zhdanov"
+                        email = "denzhdanov@gmail.com"
+                    }
+                }
+
+                scm {
+                    connection = "scm:git:git://" + projectUrl
+                    developerConnection = "scm:git:git://" + projectUrl
+                    url = projectUrl
+                }
+            }
+        }
+    }
+}
+
+if (!System.getenv("CI_ENV")) {
+    signing {
+        sign(publishing.publications["main"])
+    }
+}
+
+project.logger.lifecycle("configured Maven repo publishing setup for library $projectPath")

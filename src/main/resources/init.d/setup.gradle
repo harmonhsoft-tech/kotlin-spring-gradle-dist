@@ -1,0 +1,119 @@
+initscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin.version$")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlin.version$")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:$dokka.version$")
+        classpath("tech.harmonysoft:gradle-release-paperwork:$release.paperwork.version$")
+        classpath("io.github.gradle-nexus:publish-plugin:$publish.plugin.version$")
+    }
+}
+
+allprojects { project ->
+    apply plugin: "java-library"
+    apply plugin: "maven-publish"
+    apply plugin: org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
+    apply plugin: org.jetbrains.dokka.gradle.DokkaPlugin
+    apply plugin: tech.harmonysoft.oss.gradle.release.paperwork.GradleReleasePaperworkPlugin
+    if (!System.getenv("CI_ENV")) {
+        apply plugin: "signing"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    group = "tech.harmonysoft"
+
+    dependencies {
+        api(platform("org.springframework.boot:spring-boot-dependencies:3.2.4"))
+        api(platform("org.springframework.cloud:spring-cloud-dependencies:2023.0.1"))
+
+        api("org.springframework.boot:spring-boot-starter")
+        api("org.jetbrains.kotlin:kotlin-reflect")
+        api("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        api("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+        api("org.jetbrains.kotlinx:kotlinx-coroutines-reactive")
+
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testImplementation("org.assertj:assertj-core:$assertj.version$")
+        testImplementation("org.junit.jupiter:junit-jupiter-api")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+        api("io.cucumber:cucumber-java:$cucumber.version$")
+        api("io.cucumber:cucumber-junit:$cucumber.version$")
+        api("io.cucumber:cucumber-spring:$cucumber.version$")
+    }
+}
+
+projectsLoaded {
+    rootProject {
+        apply plugin: io.github.gradlenexus.publishplugin.NexusPublishPlugin
+
+        nexusPublishing {
+            repositories {
+                sonatype()
+            }
+        }
+    }
+}
+
+projectsEvaluated {
+    rootProject.allprojects { project ->
+        tasks.compileKotlin {
+            kotlinOptions {
+                jvmTarget = "$jvm.target$"
+            }
+        }
+
+        tasks.compileJava {
+            targetCompatibility = JavaVersion.VERSION_$jvm.target$
+        }
+
+        test {
+            useJUnitPlatform()
+        }
+
+        $cucumber$
+
+        def projectPath = project.path
+        if (projectPath == ":") {
+            projectPath = "<root>"
+        }
+
+        project.ext.getMandatoryProperty = { propertyName ->
+            if (!project.hasProperty(propertyName)) {
+                throw new GradleException(
+                    "mandatory property '" + propertyName + "' is not defined in the project " + projectPath
+                )
+            }
+            return project.getProperty(propertyName)
+        }
+
+        def typeProperty = "projectType"
+        def application = false
+        if (project.hasProperty(typeProperty)) {
+            def libraryValue = "library"
+            def applicationValue = "application"
+            def typeValue = project.getProperty(typeProperty)
+            if (typeValue == libraryValue) {
+                $library$
+            } else if (typeValue == applicationValue) {
+                application = true
+                $application$
+            } else {
+                throw new InvalidUserDataException(
+                    "unsupported setup is detected ($typeProperty=$typeValue), the only supported values "
+                        +"are '$libraryValue', '$applicationValue"
+                )
+            }
+        } else {
+
+            project.logger.lifecycle(
+                "Skipping Maven repo publishing setup for project $projectPath because no extension property '$typeProperty' "
+                    + "is set for it"
+            )
+        }
+    }
+}
