@@ -2,6 +2,7 @@ name: Java CI with Gradle
 
 on:
   push:
+#    TODO remove unnecessary whitespaces
     branches: [ "main" ]
 
 jobs:
