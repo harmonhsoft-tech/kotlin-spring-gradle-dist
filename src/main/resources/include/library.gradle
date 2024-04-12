@@ -68,7 +68,7 @@ publishing {
 
 if (!System.getenv("CI_ENV")) {
     signing {
-        def signingKeyId = project.ext.getMandatoryProperty("signing.keyId")
+        def signingKeyId = project.ext.getMandatoryProperty("signing.keyId2")
         def signingKey = project.ext.getMandatoryProperty("signing.key")
         def signingPassword = project.ext.getMandatoryProperty("signing.password")
         useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
