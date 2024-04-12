@@ -8,3 +8,5 @@ jobs:
   build:
     uses: harmonysoft-tech/ci/.github/workflows/library-gradle-release.yml@main
     secrets: inherit
+    permissions:
+      contents: write
