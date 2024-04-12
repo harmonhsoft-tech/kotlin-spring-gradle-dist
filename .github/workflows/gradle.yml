@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-
+    if: "!contains(github.event.commits[0].message, 'release-')"
     runs-on: ubuntu-22.04
     permissions:
       contents: read
@@ -24,7 +24,9 @@ jobs:
       uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
     - name: increment project version
-      run: ./gradlew release-paperwork
+      run: |
+        ./gradlew release-paperwork
+        git push
 
     - name: build gradle distributions
       run: ./gradlew buildGradleDist
@@ -34,7 +36,13 @@ jobs:
 
     - name: publish to maven central
       env:
-        TEST_SECRET: ${{ secrets.TEST_SECRET }}
+        MAVEN_CENTRAL_USER: ${{ secrets.MAVEN_CENTRAL_USER }}
+        MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+        SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+        SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
+        SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
 #      run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
       run: |
-        echo "CI_ENV=${{ vars.CI_ENV }}"
+        echo "\n" >> ./gradle.properties
+        echo "bla-bla" >> ./gradle.properties
+        cat ./gradle.properties
