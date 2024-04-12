@@ -1,3 +1,5 @@
+## v1.4.0 released on 12 Apr 2024 UTC
+  * d1a604d4e3ea4abe4bbab11190fed25de70fd61d switch to ci template
 ## v1.3.0 released on 12 Apr 2024 UTC
   * 8c3c3a37f9eb3dfd5185403cf6cc8640195e55b1 switch to ci template
 ## v1.2.0 released on 12 Apr 2024 UTC
