@@ -7,22 +7,33 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       contents: read
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 21
+    - name: set up JDK 21
       uses: actions/setup-java@v4
       with:
         java-version: '21'
         distribution: 'temurin'
 
-    # Configure Gradle for optimal use in GiHub Actions, including caching of downloaded dependencies.
-    # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
-    - name: Setup Gradle
+    - name: setup gradle
       uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
-    - name: Build with Gradle Wrapper
+    - name: print environment
+      run: env
+
+    - name: increment project version
+      run: ./gradlew release-paperwork
+
+    - name: build gradle distributions
       run: ./gradlew buildGradleDist
+
+    - name: build documentation jar
+      run: ./gradlew docJar
+
+    - name: publish to maven central
+#      run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
+      run: "dummy publish step"
