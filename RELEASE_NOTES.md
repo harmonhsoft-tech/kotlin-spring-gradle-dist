@@ -1,3 +1,5 @@
+## v1.2.0 released on 12 Apr 2024 UTC
+  * ee3b7f22e8c059d59842968c47bd86842c1c4d61 configure CI
 ## v1.1.0 released on 11 Apr 2024 UTC
   * d41cf4748457c0ce9c54f921ea4a80aa70ba4832 configure CI
   * 3dd0d651353b147c44cabc2d3d53051cda08a23f initial
