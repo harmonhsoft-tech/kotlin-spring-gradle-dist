@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "tech.harmonysoft"
-version = "1.5.0"
+version = "1.2.0"
 
 gradleDist {
     gradleVersion = "8.7"
@@ -97,6 +97,7 @@ publishing {
 }
 
 if (System.getenv("CI_ENV").isNullOrBlank()) {
+    println("xxxx signing is active")
     signing {
         sign(publishing.publications["main"])
     }
