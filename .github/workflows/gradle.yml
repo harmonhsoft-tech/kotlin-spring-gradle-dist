@@ -41,11 +41,10 @@ jobs:
         SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
         SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
         SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
-#      run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
       run: |
-        echo "\nsonatypeUsername=$MAVEN_CENTRAL_USER" >> ./gradle.properties
-        echo "\nsonatypePassword=$MAVEN_CENTRAL_PASSWORD" >> ./gradle.properties
-        echo "\nsigning.keyId=$SIGNING_KEY_ID" >> ./gradle.properties
-        echo "\nsigning.key=$SIGNING_KEY" >> ./gradle.properties
-        echo "\nsigning.password=$SIGNING_PASSWORD" >> ./gradle.properties
-        cat ./gradle.properties
+        echo "sonatypeUsername=$MAVEN_CENTRAL_USER" >> ./gradle.properties
+        echo "sonatypePassword=$MAVEN_CENTRAL_PASSWORD" >> ./gradle.properties
+        echo "signing.keyId=$SIGNING_KEY_ID" >> ./gradle.properties
+        echo "signing.key=$SIGNING_KEY" >> ./gradle.properties
+        echo "signing.password=$SIGNING_PASSWORD" >> ./gradle.properties
+        ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
