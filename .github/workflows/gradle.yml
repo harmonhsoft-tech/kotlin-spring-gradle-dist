@@ -9,7 +9,7 @@ jobs:
     if: "!contains(github.event.commits[0].message, 'release-')"
     runs-on: ubuntu-22.04
     permissions:
-      contents: read
+      contents: write
     environment: ci
 
     steps:
