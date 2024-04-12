@@ -37,4 +37,6 @@ jobs:
         TEST_SECRET: ${{ secrets.TEST_SECRET }}
 #      run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
       run: |
-        echo "TEST_SECRET=$TEST_SECRET"
+        
+        echo "$TEST_SECRET" > ./tmp.txt
+        cat ./tmp.txt
