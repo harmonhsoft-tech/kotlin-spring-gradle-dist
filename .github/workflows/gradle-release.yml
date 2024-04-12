@@ -6,4 +6,4 @@ on:
 
 jobs:
   build:
-    uses: harmonhsoft-tech/ci/.github/workflows/gradle-library.yml
+    uses: harmonhsoft-tech/ci/.github/workflows/gradle-library.yml@main
