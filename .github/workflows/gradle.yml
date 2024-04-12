@@ -47,4 +47,5 @@ jobs:
         echo "signing.keyId=$SIGNING_KEY_ID" >> ./gradle.properties
         echo "signing.key=$SIGNING_KEY" >> ./gradle.properties
         echo "signing.password=$SIGNING_PASSWORD" >> ./gradle.properties
+        type gpg
         ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
