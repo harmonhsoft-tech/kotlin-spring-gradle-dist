@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    uses: harmonysoft-tech/ci/.github/workflows/library-gradle-release.yml@main
+    uses: harmonysoft-tech/ci/.github/workflows/library/gradle/release/maven-central/library-gradle-release-maven-central.yml@main
     secrets: inherit
     permissions:
       contents: write

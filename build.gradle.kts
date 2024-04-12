@@ -97,7 +97,6 @@ publishing {
 }
 
 if (System.getenv("CI_ENV").isNullOrBlank()) {
-    println("xxxx signing is active")
     signing {
         sign(publishing.publications["main"])
     }
