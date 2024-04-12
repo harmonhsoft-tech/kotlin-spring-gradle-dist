@@ -37,4 +37,4 @@ jobs:
         TEST_SECRET: ${{ secrets.TEST_SECRET }}
 #      run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
       run: |
-        echo "CI_ENV=$CI_ENV, ${{ env.CI_ENV }}, ${{ vars.CI_ENV }}"
+        echo "CI_ENV=${{ vars.CI_ENV }}"
