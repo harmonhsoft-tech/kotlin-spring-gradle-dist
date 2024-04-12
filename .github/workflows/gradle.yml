@@ -42,10 +42,10 @@ jobs:
         SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
         SIGNING_PASSWORD: ${{ secrets.SIGNING_PASSWORD }}
       run: |
+        gpg --dearmor < echo "$SIGNING_KEY" > key.gpg
         echo "sonatypeUsername=$MAVEN_CENTRAL_USER" >> ./gradle.properties
         echo "sonatypePassword=$MAVEN_CENTRAL_PASSWORD" >> ./gradle.properties
         echo "signing.keyId=$SIGNING_KEY_ID" >> ./gradle.properties
-        echo "signing.key=$SIGNING_KEY" >> ./gradle.properties
+        echo "signing.secretKeyRingFile=./key.gpg" >> ./gradle.properties
         echo "signing.password=$SIGNING_PASSWORD" >> ./gradle.properties
-        type gpg
         ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
