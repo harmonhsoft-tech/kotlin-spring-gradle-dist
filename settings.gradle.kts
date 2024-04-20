@@ -1,1 +1,1 @@
-rootProject.name = "kotlin-spring-gradle-dist"
+rootProject.name = "[harmonysoft-tech] kotlin-spring-gradle-dist"

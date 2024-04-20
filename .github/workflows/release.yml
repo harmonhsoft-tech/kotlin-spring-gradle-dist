@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     uses: harmonysoft-tech/ci/.github/workflows/library-gradle-release-maven-central.yml@main
+    with:
+      BUILD_ACTION: buildGradleDist
     secrets: inherit
     permissions:
       contents: write
