@@ -1,3 +1,5 @@
+## v1.5.0 released on 20 Apr 2024 UTC
+  * 8cfa2707029e3ab71f760d9c13f0049c08fd9464 included kotlinx-coroutines-slf4j by default
 ## v1.4.0 released on 12 Apr 2024 UTC
   * d1a604d4e3ea4abe4bbab11190fed25de70fd61d switch to ci template
 ## v1.3.0 released on 12 Apr 2024 UTC
