@@ -36,6 +36,7 @@ allprojects { project ->
         api("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
         api("org.jetbrains.kotlinx:kotlinx-coroutines-core")
         api("org.jetbrains.kotlinx:kotlinx-coroutines-reactive")
+        api("org.jetbrains.kotlinx:kotlinx-coroutines-slf4j")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testImplementation("org.assertj:assertj-core:$assertj.version$")
