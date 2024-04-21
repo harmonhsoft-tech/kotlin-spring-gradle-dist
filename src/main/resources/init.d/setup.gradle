@@ -15,6 +15,7 @@ allprojects { project ->
     apply plugin: "java-library"
     apply plugin: "maven-publish"
     apply plugin: org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
+    apply plugin: org.jetbrains.kotlin.allopen.gradle.SpringGradleSubplugin
     apply plugin: org.jetbrains.dokka.gradle.DokkaPlugin
     apply plugin: tech.harmonysoft.oss.gradle.release.paperwork.GradleReleasePaperworkPlugin
     if (!System.getenv("CI_ENV")) {
