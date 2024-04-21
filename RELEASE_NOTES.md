@@ -1,3 +1,5 @@
+## v1.6.0 released on 21 Apr 2024 UTC
+  * 167651674d168eb70a28b6f25bca62347aefd1ce added kotlin spring plugin
 ## v1.5.0 released on 20 Apr 2024 UTC
   * 8cfa2707029e3ab71f760d9c13f0049c08fd9464 included kotlinx-coroutines-slf4j by default
 ## v1.4.0 released on 12 Apr 2024 UTC
