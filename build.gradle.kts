@@ -2,7 +2,7 @@ plugins {
     `java-library`
     `maven-publish`
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
-    id("tech.harmonysoft.oss.custom-gradle-dist-plugin") version "1.16.0"
+    id("tech.harmonysoft.oss.custom-gradle-dist-plugin") version "1.19.0"
     id("tech.harmonysoft.oss.gradle.release.paperwork") version "1.8.0"
     if (System.getenv("CI_ENV").isNullOrBlank()) {
         signing
