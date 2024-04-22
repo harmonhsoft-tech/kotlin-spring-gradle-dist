@@ -1,3 +1,5 @@
+## v1.7.0 released on 22 Apr 2024 UTC
+  * 361b5aa5b014dbf9082bf3a82266ec76927b5abb upgraded custom gradle dist plugin to the latest version
 ## v1.6.0 released on 21 Apr 2024 UTC
   * 167651674d168eb70a28b6f25bca62347aefd1ce added kotlin spring plugin
 ## v1.5.0 released on 20 Apr 2024 UTC
