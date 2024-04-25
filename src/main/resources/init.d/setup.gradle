@@ -78,6 +78,7 @@ projectsEvaluated {
         }
 
         $cucumber$
+        $test-environment$
 
         def projectPath = project.path
         if (projectPath == ":") {

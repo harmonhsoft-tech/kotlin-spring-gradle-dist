@@ -1,0 +1,15 @@
+task startTestEnv(type: JavaExec) {
+    classpath = sourceSets["test"].runtimeClasspath + sourceSets["main"].runtimeClasspath
+    main = "tech.harmonysoft.oss.environment.starter.TestEnvironmentStarter"
+    systemProperties System.getProperties()
+}
+
+task verifyTestEnvRunning(type: JavaExec) {
+    classpath = sourceSets["test"].runtimeClasspath + sourceSets["main"].runtimeClasspath
+    main = "tech.harmonysoft.oss.environment.starter.TestEnvironmentChecker"
+}
+
+task stopTestEnv(type: JavaExec) {
+    classpath = sourceSets["test"].runtimeClasspath + sourceSets["main"].runtimeClasspath
+    main = "tech.harmonysoft.oss.environment.starter.TestEnvironmentStopper"
+}
