@@ -1,3 +1,5 @@
+## v1.8.0 released on 25 Apr 2024 UTC
+  * 97050695988fc5f6528ceb2b033ba0be1f4681c5 added test environment management tasks
 ## v1.7.0 released on 22 Apr 2024 UTC
   * 361b5aa5b014dbf9082bf3a82266ec76927b5abb upgraded custom gradle dist plugin to the latest version
 ## v1.6.0 released on 21 Apr 2024 UTC
