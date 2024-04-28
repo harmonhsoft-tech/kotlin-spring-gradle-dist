@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "tech.harmonysoft"
-version = "1.8.0"
+version = "1.9.0"
 
 gradleDist {
     gradleVersion = "8.7"

@@ -1,3 +1,5 @@
+## v1.9.0 released on 28 Apr 2024 UTC
+  * 65235454bfb898c6785b6eb16f1b014c3efeae6d corrected package for test environment starters
 ## v1.8.0 released on 25 Apr 2024 UTC
   * 97050695988fc5f6528ceb2b033ba0be1f4681c5 added test environment management tasks
 ## v1.7.0 released on 22 Apr 2024 UTC
