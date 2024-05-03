@@ -1,3 +1,5 @@
+## v1.10.0 released on 03 May 2024 UTC
+  * 8b821bf7338e84715dc529c13aafe392efe9c494 added kotlinx-coroutines-reactor by default
 ## v1.9.0 released on 28 Apr 2024 UTC
   * 65235454bfb898c6785b6eb16f1b014c3efeae6d corrected package for test environment starters
 ## v1.8.0 released on 25 Apr 2024 UTC
