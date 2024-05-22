@@ -1,9 +1,9 @@
-def dockerImagePath = project.ext.getMandatoryProperty("dockerImagePath")
+def dockerOrganisation = project.ext.getMandatoryProperty("dockerOrganisation")
 def dockerLogin = project.ext.getMandatoryProperty("dockerLogin")
 def dockerPassword = project.ext.getMandatoryProperty("dockerPassword")
 
 bootBuildImage {
-    imageName = "${dockerImagePath}/${project.name}:${project.version}"
+    imageName = "${dockerOrganisation}/${project.name}:${project.version}"
     publish = true
     docker {
         publishRegistry {
