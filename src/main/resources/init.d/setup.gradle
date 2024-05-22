@@ -8,6 +8,7 @@ initscript {
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:$dokka.version$")
         classpath("tech.harmonysoft:gradle-release-paperwork:$release.paperwork.version$")
         classpath("io.github.gradle-nexus:publish-plugin:$publish.plugin.version$")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$spring.boot.version$")
     }
 }
 
@@ -103,7 +104,6 @@ projectsEvaluated {
             if (typeValue == libraryValue) {
                 $library$
             } else if (typeValue == applicationValue) {
-                application = true
                 $application$
             } else {
                 throw new InvalidUserDataException(

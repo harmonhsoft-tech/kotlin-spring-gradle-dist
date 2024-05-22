@@ -1,0 +1,15 @@
+def dockerImagePath = project.ext.getMandatoryProperty("dockerImagePath")
+def dockerLogin = project.ext.getMandatoryProperty("dockerLogin")
+def dockerPassword = project.ext.getMandatoryProperty("dockerPassword")
+
+bootBuildImage {
+    imageName = "${dockerImagePath}/${project.name}:${project.version}"
+    publish = true
+    docker {
+        publishRegistry {
+            url = "https://index.docker.io/v1/"
+            username = dockerLogin
+            password = dockerPassword
+        }
+    }
+}
