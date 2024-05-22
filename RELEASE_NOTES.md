@@ -1,3 +1,5 @@
+## v1.11.0 released on 22 May 2024 UTC
+  * 11045afb1d0535364b28a11a1f957ac4e1bd219b added support for building and publishing application image to docker hub
 ## v1.10.0 released on 03 May 2024 UTC
   * 8b821bf7338e84715dc529c13aafe392efe9c494 added kotlinx-coroutines-reactor by default
 ## v1.9.0 released on 28 Apr 2024 UTC
