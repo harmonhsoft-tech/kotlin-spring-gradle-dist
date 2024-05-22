@@ -1,3 +1,5 @@
+## v1.12.0 released on 22 May 2024 UTC
+  * 819540730570559916dc2f0bd3b8b2c361441ba5 renamed 'dockerImagePath' property to 'dockerOrganisation'
 ## v1.11.0 released on 22 May 2024 UTC
   * 11045afb1d0535364b28a11a1f957ac4e1bd219b added support for building and publishing application image to docker hub
 ## v1.10.0 released on 03 May 2024 UTC
