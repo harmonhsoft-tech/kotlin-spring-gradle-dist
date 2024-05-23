@@ -1,3 +1,5 @@
+## v1.13.0 released on 23 May 2024 UTC
+  * 2e8b48f77f75398626eda1ce748e3b79aac24fe0 corrected application setup
 ## v1.12.0 released on 22 May 2024 UTC
   * 819540730570559916dc2f0bd3b8b2c361441ba5 renamed 'dockerImagePath' property to 'dockerOrganisation'
 ## v1.11.0 released on 22 May 2024 UTC
