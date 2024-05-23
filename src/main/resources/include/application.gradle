@@ -1,10 +1,18 @@
-def dockerOrganisation = project.ext.getMandatoryProperty("dockerOrganisation")
-def dockerLogin = project.ext.getMandatoryProperty("dockerLogin")
-def dockerPassword = project.ext.getMandatoryProperty("dockerPassword")
+// we want to allow to import the project into IDE in local environment. We don't need additional docker info for that
+def dockerOrganisation = "mental-mate"
+def dockerLogin = ""
+def dockerPassword = ""
+if (project.ci) {
+    dockerOrganisation = project.ext.getMandatoryProperty("dockerOrganisation")
+    dockerLogin = project.ext.getMandatoryProperty("dockerLogin")
+    dockerPassword = project.ext.getMandatoryProperty("dockerPassword")
+}
 
 bootBuildImage {
     imageName = "${dockerOrganisation}/${project.name}:${project.version}"
-    publish = true
+    if (System.getenv("CI_ENV") == "true") {
+        publish = true
+    }
     docker {
         publishRegistry {
             url = "https://index.docker.io/v1/"

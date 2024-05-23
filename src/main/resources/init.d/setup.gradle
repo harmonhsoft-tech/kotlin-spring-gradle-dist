@@ -19,6 +19,7 @@ allprojects { project ->
     apply plugin: org.jetbrains.kotlin.allopen.gradle.SpringGradleSubplugin
     apply plugin: org.jetbrains.dokka.gradle.DokkaPlugin
     apply plugin: tech.harmonysoft.oss.gradle.release.paperwork.GradleReleasePaperworkPlugin
+    apply plugin: org.springframework.boot.gradle.plugin.SpringBootPlugin
     if (!System.getenv("CI_ENV")) {
         apply plugin: "signing"
     }
@@ -94,6 +95,7 @@ projectsEvaluated {
             }
             return project.getProperty(propertyName)
         }
+        project.ext.ci = System.getenv("CI_ENV") == "true"
 
         def typeProperty = "projectType"
         def application = false
