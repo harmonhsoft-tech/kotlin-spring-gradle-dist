@@ -1,3 +1,5 @@
+## v1.15.0 released on 24 May 2024 UTC
+  * d20358543612dfc0c469bab550f93a5fadc8fd9a corrected CI environment check
 ## v1.14.0 released on 24 May 2024 UTC
   * 5cb34f900a3ab6e69673de987db489afb046dc76 use target profile for test environment tasks
 ## v1.13.0 released on 23 May 2024 UTC
