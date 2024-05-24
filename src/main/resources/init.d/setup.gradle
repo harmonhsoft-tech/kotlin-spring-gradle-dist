@@ -96,9 +96,9 @@ projectsEvaluated {
             return project.getProperty(propertyName)
         }
         project.ext.ci = System.getenv("CI_ENV") == "true"
+        project.logger.lifecycle("running in CI environment: ${project.ext.ci}")
 
         def typeProperty = "projectType"
-        def application = false
         if (project.hasProperty(typeProperty)) {
             def libraryValue = "library"
             def applicationValue = "application"

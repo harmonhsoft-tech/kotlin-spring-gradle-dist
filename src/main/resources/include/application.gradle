@@ -2,7 +2,7 @@
 def dockerOrganisation = "mental-mate"
 def dockerLogin = ""
 def dockerPassword = ""
-if (project.ci) {
+if (project.ext.ci) {
     dockerOrganisation = project.ext.getMandatoryProperty("dockerOrganisation")
     dockerLogin = project.ext.getMandatoryProperty("dockerLogin")
     dockerPassword = project.ext.getMandatoryProperty("dockerPassword")
@@ -10,8 +10,9 @@ if (project.ci) {
 
 bootBuildImage {
     imageName = "${dockerOrganisation}/${project.name}:${project.version}"
-    if (System.getenv("CI_ENV") == "true") {
+    if (project.ext.ci) {
         publish = true
+        project.logger.lifecycle("configured docker image publishing")
     }
     docker {
         publishRegistry {
