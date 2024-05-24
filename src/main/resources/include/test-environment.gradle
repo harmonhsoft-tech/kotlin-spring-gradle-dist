@@ -1,15 +1,17 @@
 task startTestEnv(type: JavaExec) {
     classpath = sourceSets["test"].runtimeClasspath + sourceSets["main"].runtimeClasspath
     main = "tech.harmonysoft.oss.environment.bin.TestEnvironmentStarter"
-    systemProperties System.getProperties()
+    systemProperties (System.getProperties() + ["spring.profiles.active" : "cucumber"])
 }
 
 task verifyTestEnvRunning(type: JavaExec) {
     classpath = sourceSets["test"].runtimeClasspath + sourceSets["main"].runtimeClasspath
     main = "tech.harmonysoft.oss.environment.bin.TestEnvironmentChecker"
+    systemProperties (System.getProperties() + ["spring.profiles.active" : "cucumber"])
 }
 
 task stopTestEnv(type: JavaExec) {
     classpath = sourceSets["test"].runtimeClasspath + sourceSets["main"].runtimeClasspath
     main = "tech.harmonysoft.oss.environment.bin.TestEnvironmentStopper"
+    systemProperties (System.getProperties() + ["spring.profiles.active" : "cucumber"])
 }
